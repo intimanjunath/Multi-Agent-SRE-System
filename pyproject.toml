@@ -1,0 +1,86 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sre-agent"
+version = "1.0.0"
+description = "Multi-agent SRE assistant for infrastructure troubleshooting"
+authors = [{name = "SRE Team", email = "sre@company.com"}]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.12"
+
+dependencies = [
+    "langgraph>=0.5.4",
+    "langchain-core>=0.3.72",
+    "langchain-groq>=0.1.0",
+    "langchain-mcp-adapters>=0.1.9",
+    "langchain-ollama>=0.0.1",
+    "langchain-community",
+    "langsmith[otel]",
+    "pydantic>=2.0.0",
+    "fastapi>=0.110.0",
+    "uvicorn>=0.27.0",
+    "langgraph>=0.0.26",
+    "langchain-core>=0.1.30",
+    "langchain-community>=0.0.27",
+    "langchain-openai>=0.0.8",
+    "langchain_groq>=0.0.1",
+    "langchain_ollama>=0.0.1",
+    "python-dotenv>=1.0.1",
+    "pydantic>=2.6.3",
+    "sqlalchemy>=2.0.28",
+    "asyncpg>=0.29.0",
+    "redis>=5.0.3",
+    "httpx>=0.27.0",
+    "mcp>=0.1.0",
+    "langchain-mcp-adapters>=0.0.1",
+    "psycopg2-binary>=2.9.9",
+    "alembic>=1.13.1",
+    "passlib[bcrypt]>=1.7.4",
+    "python-jose[cryptography]>=3.3.0",
+    "python-multipart>=0.0.9",
+    "email-validator>=2.1.1",
+    "bcrypt>=4.1.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "mypy>=1.5.0",
+    "flake8>=6.0.0",
+    "bandit>=1.7.0",
+    "pre-commit>=3.0.0",
+    "ruff>=0.1.0"
+]
+
+
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["sre_agent*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py312']
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
